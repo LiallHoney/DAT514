@@ -1,0 +1,23 @@
+{
+  "name": "dat514",
+  "version": "1.0.0",
+  "description": "My Nodejs App",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LiallHoney/DAT514.git"
+  },
+  "author": "Liall Honey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LiallHoney/DAT514/issues"
+  },
+  "homepage": "https://github.com/LiallHoney/DAT514#readme"
+}
