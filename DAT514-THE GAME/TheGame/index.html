@@ -1,0 +1,120 @@
+<!--SetupS-->
+
+
+<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
+<style>
+    body {
+        margin: 0;
+        background: black;
+    }
+</style>
+
+<!--Score top left-->
+<div1 class="fixed text-white ml-2 mt-2 select-none"><span>Score: </span><span id="scoreEL">0</span></div1>
+
+<!--Main Menu-->
+
+<div class="fixed inset-0 flex items-center justify-center" id="modalEL">
+    <div class="bg-white max-w-md w-full p-6 text-center rounded-lg" >
+        <form action="/leaderboard" Method="POST">
+            <label class="text-xl font-bold leading-none p-2">Name</label>
+            <input placeholder="Enter Name Once Played" class="p-1 bg-gray-200 text-black" type="text" name="Name">
+            <button class="pb-2 p-1.5 bg-gray-500 text-white rounded-full hover:bg-blue-500 ml-1">Submit</button>
+    
+            <h1 class="text-4xl font-bold leading-none" id="bigscoreEL"type="Number" name="Score">0</h1>
+        </form>
+        <p class="text-sm text-gray-700 mb-4">Points</p>
+        <div><button class="bg-green-800 text-white w-full py-3 rounded-full  hover:bg-green-500" id="startgameBTN"> Start Game </button>
+        </div>
+        <div><button  class="bg-blue-800 text-white w-full py-3 rounded-full mt-4  hover:bg-blue-500"id="leaderboardBTN"> LeaderBoard </button>
+        </div>
+    </div>
+</div>
+
+<!--Leaderboard-->
+
+<script>
+    fetch('http://localhost:3000/leaderboard').then(
+        res=>{
+            res.json().then(
+                data=>{
+                    console.log(data);
+                    if(data.length > 0){
+                        var temp = "";
+                        // Start for loop
+                        let i = (1)
+                        data.forEach((u) => {
+                            temp +="<tr>";
+                            temp +="<td>"+i+++"</td>";
+                            temp +="<td>"+u.Name+"</td>";  
+                            temp +="<td>"+u.Score+"</td></tr>";      
+                        });
+                        // End for Loop
+
+                        document.getElementById("data").innerHTML = temp;
+                    }
+                }
+            )
+        }
+    )
+</script>
+
+
+<div class="fixed inset-0 flex items-center justify-center" id="leaderboardEL" style="display: none;"> 
+    <div class="bg-white max-w-md w-full p-3 text-center rounded-lg" >
+        <h1 class="text-4xl font-bold leading-none pb-6"> Top Score</h1>
+        <table class="bg-white max-w-md w-full p-6 text-center">
+            <thead>
+                <tr>
+                    <td class="text-xl font-bold leading-none pb-3 ">Rank</td>
+                    <td class="text-xl font-bold leading-none pb-3">Name</td>
+                    <td class="text-xl font-bold leading-none pb-3">Score</td>
+                </tr>
+            </thead>
+                <tbody id="data">
+                    <tr>
+                        <td class="bg-green-500 pb-1 rounded-tl-lg rounded-bl-lg">1</td>
+                        <td class="bg-green-500 pb-1">p1</td>
+                        <td class="bg-green-500 pb-1 rounded-tr-lg rounded-br-lg">0</td>
+                    </tr>
+                    <tr>
+                        <td class="pb-1">2</td>
+                        <td class="pb-1">p2</td>
+                        <td class="pb-1">0</td>
+                    </tr>
+                    <tr>
+                        <td class="bg-green-500 pb-1 rounded-tl-lg rounded-bl-lg">3</td>
+                        <td class="bg-green-500 pb-1">p3</td>
+                        <td class="bg-green-500 pb-1 rounded-tr-lg rounded-br-lg">0</td>
+                    </tr>
+                    <tr>
+                        <td class="pb-1">4</td>
+                        <td class="pb-1">p4</td>
+                        <td class="pb-1">0</td>
+                    </tr>
+                    <tr>
+                        <td class="bg-green-500 pb-1 rounded-tl-lg rounded-bl-lg">5</td>
+                        <td class="bg-green-500 pb-1">p5</td>
+                        <td class="bg-green-500 pb-1 rounded-tr-lg rounded-br-lg">0</td>
+                    </tr>
+
+                </tbody>
+        </table>
+
+        
+        <div class="pt-3"><button class="bg-red-500 text-white w-full py-3 pt-3 rounded-full " id="backBTN"> Back </button>
+        </div>
+        </div>
+    </div>
+</div>
+
+
+
+<canvas></canvas>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js" 
+integrity="sha512-UxP+UhJaGRWuMG2YC6LPWYpFQnsSgnor0VUF3BHdD83PS/pOpN+FYbZmrYN+ISX8jnvgVUciqP/fILOXDjZSwg==" 
+crossorigin="anonymous" 
+referrerpolicy="no-referrer">
+</script>
+<script src="./index.js"></script>

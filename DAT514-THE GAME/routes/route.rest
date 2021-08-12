@@ -1,0 +1,32 @@
+GET http://localhost:3000/Leaderboard
+
+###
+
+GET http://localhost:3000/Leaderboard/6113dbf280197b3b302ed190
+
+
+
+###
+
+POST http://localhost:3000/leaderboard
+Content-Type: application/json
+
+
+{
+    "Name": "James",
+    "Score": 250000
+}
+
+###
+
+DELETE http://localhost:3000/Leaderboard/61145fef623e0a37746922e8
+
+###
+
+Patch http://localhost:3000/Leaderboard/6113f3283b69eb503413d1b6
+Content-Type: application/json
+
+{
+    "Name" : "Harry",
+    "Score": 5000
+}
